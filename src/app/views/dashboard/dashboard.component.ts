@@ -163,19 +163,20 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.initCharts();
     this.updateChartOnColorModeChange();
-
-    this.signalRService.startConnection();
-    // this.signalRService.addTransferChartDataListener();
-    // this.signalRService.addBroadcastChartDataListener();
-    // this.startHttpRequest();
+    this.startHttpRequest();
   }
 
-  // private startHttpRequest = () => {
-  //   this.http.get('https://localhost:5001/api/chart')
-  //     .subscribe(res => {
-  //       console.log(res);
-  //     })
-  // }
+  private startHttpRequest = () => {
+    this.http.get('https://localhost:5001/api/chart')
+      .subscribe(res => {
+        console.log(res);
+      })
+
+    this.http.get('https://localhost:5001/api/widget')
+      .subscribe(res => {
+        console.log(res);
+      })
+  }
 
   public chartClicked = (event) => {
     console.log(event);
